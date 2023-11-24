@@ -13,18 +13,16 @@ import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import {
   IsDate,
-  ValidateNested,
+  IsString,
   IsOptional,
   IsNumber,
-  IsString,
-  IsInt,
+  ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Customer } from "../../customer/base/Customer";
-import { Title } from "../../title/base/Title";
+import { Order } from "../../order/base/Order";
 
 @ObjectType()
-class Order {
+class Title {
   @ApiProperty({
     required: true,
   })
@@ -35,23 +33,14 @@ class Order {
 
   @ApiProperty({
     required: false,
-    type: () => Customer,
+    type: String,
   })
-  @ValidateNested()
-  @Type(() => Customer)
+  @IsString()
   @IsOptional()
-  customer?: Customer | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsNumber()
-  @IsOptional()
-  @Field(() => Number, {
+  @Field(() => String, {
     nullable: true,
   })
-  discount!: number | null;
+  description!: string | null;
 
   @ApiProperty({
     required: true,
@@ -63,34 +52,34 @@ class Order {
 
   @ApiProperty({
     required: false,
-    type: () => Title,
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  itemPrice!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Order],
   })
   @ValidateNested()
-  @Type(() => Title)
+  @Type(() => Order)
   @IsOptional()
-  product?: Title | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  quantity!: number | null;
-
-  @ApiProperty({
-    required: false,
-    type: Number,
-  })
-  @IsInt()
-  @IsOptional()
-  @Field(() => Number, {
-    nullable: true,
-  })
-  totalPrice!: number | null;
+  orders?: Array<Order>;
 
   @ApiProperty({
     required: true,
@@ -101,4 +90,4 @@ class Order {
   updatedAt!: Date;
 }
 
-export { Order as Order };
+export { Title as Title };

@@ -24,7 +24,7 @@ model Order {
   customerId String?
   discount   Float?
   id         String    @id @default(cuid())
-  product    Product?  @relation(fields: [productId], references: [id])
+  product    Title?    @relation(fields: [productId], references: [id])
   productId  String?
   quantity   Int?
   totalPrice Int?
@@ -42,7 +42,7 @@ model Customer {
   updatedAt DateTime @updatedAt
 }
 
-model Product {
+model Title {
   createdAt   DateTime @default(now())
   description String?
   id          String   @id @default(cuid())

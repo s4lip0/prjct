@@ -16,7 +16,7 @@ import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
-import { ProductWhereUniqueInput } from "../../product/base/ProductWhereUniqueInput";
+import { TitleWhereUniqueInput } from "../../title/base/TitleWhereUniqueInput";
 import { IntNullableFilter } from "../../util/IntNullableFilter";
 
 @InputType()
@@ -57,15 +57,15 @@ class OrderWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => ProductWhereUniqueInput,
+    type: () => TitleWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => ProductWhereUniqueInput)
+  @Type(() => TitleWhereUniqueInput)
   @IsOptional()
-  @Field(() => ProductWhereUniqueInput, {
+  @Field(() => TitleWhereUniqueInput, {
     nullable: true,
   })
-  product?: ProductWhereUniqueInput;
+  product?: TitleWhereUniqueInput;
 
   @ApiProperty({
     required: false,
