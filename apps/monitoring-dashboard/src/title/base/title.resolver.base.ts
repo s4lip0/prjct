@@ -26,8 +26,8 @@ import { TitleCountArgs } from "./TitleCountArgs";
 import { TitleFindManyArgs } from "./TitleFindManyArgs";
 import { TitleFindUniqueArgs } from "./TitleFindUniqueArgs";
 import { Title } from "./Title";
-import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
-import { Order } from "../../order/base/Order";
+import { StatusFindManyArgs } from "../../status/base/StatusFindManyArgs";
+import { Status } from "../../status/base/Status";
 import { TitleService } from "../title.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Title)
@@ -141,16 +141,16 @@ export class TitleResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Order], { name: "orders" })
+  @graphql.ResolveField(() => [Status], { name: "orders" })
   @nestAccessControl.UseRoles({
-    resource: "Order",
+    resource: "Status",
     action: "read",
     possession: "any",
   })
   async resolveFieldOrders(
     @graphql.Parent() parent: Title,
-    @graphql.Args() args: OrderFindManyArgs
-  ): Promise<Order[]> {
+    @graphql.Args() args: StatusFindManyArgs
+  ): Promise<Status[]> {
     const results = await this.service.findOrders(parent.id, args);
 
     if (!results) {

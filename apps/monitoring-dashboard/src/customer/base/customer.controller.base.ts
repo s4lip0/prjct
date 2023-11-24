@@ -27,9 +27,9 @@ import { CustomerWhereUniqueInput } from "./CustomerWhereUniqueInput";
 import { CustomerFindManyArgs } from "./CustomerFindManyArgs";
 import { CustomerUpdateInput } from "./CustomerUpdateInput";
 import { Customer } from "./Customer";
-import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
-import { Order } from "../../order/base/Order";
-import { OrderWhereUniqueInput } from "../../order/base/OrderWhereUniqueInput";
+import { StatusFindManyArgs } from "../../status/base/StatusFindManyArgs";
+import { Status } from "../../status/base/Status";
+import { StatusWhereUniqueInput } from "../../status/base/StatusWhereUniqueInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -206,17 +206,17 @@ export class CustomerControllerBase {
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id/orders")
-  @ApiNestedQuery(OrderFindManyArgs)
+  @ApiNestedQuery(StatusFindManyArgs)
   @nestAccessControl.UseRoles({
-    resource: "Order",
+    resource: "Status",
     action: "read",
     possession: "any",
   })
   async findManyOrders(
     @common.Req() request: Request,
     @common.Param() params: CustomerWhereUniqueInput
-  ): Promise<Order[]> {
-    const query = plainToClass(OrderFindManyArgs, request.query);
+  ): Promise<Status[]> {
+    const query = plainToClass(StatusFindManyArgs, request.query);
     const results = await this.service.findOrders(params.id, {
       ...query,
       select: {
@@ -258,7 +258,7 @@ export class CustomerControllerBase {
   })
   async connectOrders(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: StatusWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       orders: {
@@ -280,7 +280,7 @@ export class CustomerControllerBase {
   })
   async updateOrders(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: StatusWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       orders: {
@@ -302,7 +302,7 @@ export class CustomerControllerBase {
   })
   async disconnectOrders(
     @common.Param() params: CustomerWhereUniqueInput,
-    @common.Body() body: OrderWhereUniqueInput[]
+    @common.Body() body: StatusWhereUniqueInput[]
   ): Promise<void> {
     const data = {
       orders: {

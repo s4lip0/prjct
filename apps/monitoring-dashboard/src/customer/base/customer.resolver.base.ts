@@ -26,8 +26,8 @@ import { CustomerCountArgs } from "./CustomerCountArgs";
 import { CustomerFindManyArgs } from "./CustomerFindManyArgs";
 import { CustomerFindUniqueArgs } from "./CustomerFindUniqueArgs";
 import { Customer } from "./Customer";
-import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
-import { Order } from "../../order/base/Order";
+import { StatusFindManyArgs } from "../../status/base/StatusFindManyArgs";
+import { Status } from "../../status/base/Status";
 import { CustomerService } from "../customer.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
 @graphql.Resolver(() => Customer)
@@ -145,16 +145,16 @@ export class CustomerResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Order], { name: "orders" })
+  @graphql.ResolveField(() => [Status], { name: "orders" })
   @nestAccessControl.UseRoles({
-    resource: "Order",
+    resource: "Status",
     action: "read",
     possession: "any",
   })
   async resolveFieldOrders(
     @graphql.Parent() parent: Customer,
-    @graphql.Args() args: OrderFindManyArgs
-  ): Promise<Order[]> {
+    @graphql.Args() args: StatusFindManyArgs
+  ): Promise<Status[]> {
     const results = await this.service.findOrders(parent.id, args);
 
     if (!results) {

@@ -1,4 +1,4 @@
-import { Order } from "../order/Order";
+import { Status } from "../status/Status";
 
 export type Title = {
   createdAt: Date;
@@ -6,6 +6,6 @@ export type Title = {
   id: string;
   itemPrice: number | null;
   name: string | null;
-  orders?: Array<Order>;
+  orders?: Array<Status>;
   updatedAt: Date;
 };

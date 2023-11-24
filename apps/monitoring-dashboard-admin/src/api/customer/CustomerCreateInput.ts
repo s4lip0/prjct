@@ -1,9 +1,9 @@
-import { OrderCreateNestedManyWithoutCustomersInput } from "./OrderCreateNestedManyWithoutCustomersInput";
+import { StatusCreateNestedManyWithoutCustomersInput } from "./StatusCreateNestedManyWithoutCustomersInput";
 
 export type CustomerCreateInput = {
   email?: string | null;
   firstName?: string | null;
   lastName?: string | null;
-  orders?: OrderCreateNestedManyWithoutCustomersInput;
+  orders?: StatusCreateNestedManyWithoutCustomersInput;
   phone?: string | null;
 };

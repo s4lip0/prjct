@@ -17,7 +17,7 @@ import {
   IsNumber,
   ValidateNested,
 } from "class-validator";
-import { OrderUpdateManyWithoutTitlesInput } from "./OrderUpdateManyWithoutTitlesInput";
+import { StatusUpdateManyWithoutTitlesInput } from "./StatusUpdateManyWithoutTitlesInput";
 import { Type } from "class-transformer";
 
 @InputType()
@@ -57,15 +57,15 @@ class TitleUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: () => OrderUpdateManyWithoutTitlesInput,
+    type: () => StatusUpdateManyWithoutTitlesInput,
   })
   @ValidateNested()
-  @Type(() => OrderUpdateManyWithoutTitlesInput)
+  @Type(() => StatusUpdateManyWithoutTitlesInput)
   @IsOptional()
-  @Field(() => OrderUpdateManyWithoutTitlesInput, {
+  @Field(() => StatusUpdateManyWithoutTitlesInput, {
     nullable: true,
   })
-  orders?: OrderUpdateManyWithoutTitlesInput;
+  orders?: StatusUpdateManyWithoutTitlesInput;
 }
 
 export { TitleUpdateInput as TitleUpdateInput };

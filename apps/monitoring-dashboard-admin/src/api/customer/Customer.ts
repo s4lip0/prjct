@@ -1,4 +1,4 @@
-import { Order } from "../order/Order";
+import { Status } from "../status/Status";
 
 export type Customer = {
   createdAt: Date;
@@ -6,7 +6,7 @@ export type Customer = {
   firstName: string | null;
   id: string;
   lastName: string | null;
-  orders?: Array<Order>;
+  orders?: Array<Status>;
   phone: string | null;
   updatedAt: Date;
 };

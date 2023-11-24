@@ -9,10 +9,10 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
-import { OrderList } from "./order/OrderList";
-import { OrderCreate } from "./order/OrderCreate";
-import { OrderEdit } from "./order/OrderEdit";
-import { OrderShow } from "./order/OrderShow";
+import { StatusList } from "./status/StatusList";
+import { StatusCreate } from "./status/StatusCreate";
+import { StatusEdit } from "./status/StatusEdit";
+import { StatusShow } from "./status/StatusShow";
 import { CustomerList } from "./customer/CustomerList";
 import { CustomerCreate } from "./customer/CustomerCreate";
 import { CustomerEdit } from "./customer/CustomerEdit";
@@ -55,11 +55,11 @@ const App = (): React.ReactElement => {
           show={UserShow}
         />
         <Resource
-          name="Order"
-          list={OrderList}
-          edit={OrderEdit}
-          create={OrderCreate}
-          show={OrderShow}
+          name="Status"
+          list={StatusList}
+          edit={StatusEdit}
+          create={StatusCreate}
+          show={StatusShow}
         />
         <Resource
           name="Customer"

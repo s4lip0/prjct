@@ -16,7 +16,7 @@ import { Type } from "class-transformer";
 import { IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
-import { OrderListRelationFilter } from "../../order/base/OrderListRelationFilter";
+import { StatusListRelationFilter } from "../../status/base/StatusListRelationFilter";
 
 @InputType()
 class TitleWhereInput {
@@ -66,15 +66,15 @@ class TitleWhereInput {
 
   @ApiProperty({
     required: false,
-    type: () => OrderListRelationFilter,
+    type: () => StatusListRelationFilter,
   })
   @ValidateNested()
-  @Type(() => OrderListRelationFilter)
+  @Type(() => StatusListRelationFilter)
   @IsOptional()
-  @Field(() => OrderListRelationFilter, {
+  @Field(() => StatusListRelationFilter, {
     nullable: true,
   })
-  orders?: OrderListRelationFilter;
+  orders?: StatusListRelationFilter;
 }
 
 export { TitleWhereInput as TitleWhereInput };

@@ -18,7 +18,7 @@ model User {
   username  String   @unique
 }
 
-model Order {
+model Status {
   createdAt  DateTime  @default(now())
   customer   Customer? @relation(fields: [customerId], references: [id])
   customerId String?
@@ -37,7 +37,7 @@ model Customer {
   firstName String?
   id        String   @id @default(cuid())
   lastName  String?
-  orders    Order[]
+  orders    Status[]
   phone     String?
   updatedAt DateTime @updatedAt
 }
@@ -48,6 +48,6 @@ model Title {
   id          String   @id @default(cuid())
   itemPrice   Float?
   name        String?
-  orders      Order[]
+  orders      Status[]
   updatedAt   DateTime @updatedAt
 }

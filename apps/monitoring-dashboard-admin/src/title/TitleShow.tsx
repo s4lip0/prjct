@@ -24,7 +24,11 @@ export const TitleShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Item Price" source="itemPrice" />
         <TextField label="Name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceManyField reference="Order" target="productId" label="Orders">
+        <ReferenceManyField
+          reference="Status"
+          target="productId"
+          label="Orders"
+        >
           <Datagrid rowClick="show">
             <DateField source="createdAt" label="Created At" />
             <ReferenceField
