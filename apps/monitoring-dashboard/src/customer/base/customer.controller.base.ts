@@ -51,22 +51,8 @@ export class CustomerControllerBase {
   })
   async create(@common.Body() data: CustomerCreateInput): Promise<Customer> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        address: data.address
-          ? {
-              connect: data.address,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -95,12 +81,6 @@ export class CustomerControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -130,12 +110,6 @@ export class CustomerControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        address: {
-          select: {
-            id: true,
-          },
-        },
-
         createdAt: true,
         email: true,
         firstName: true,
@@ -172,22 +146,8 @@ export class CustomerControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          address: data.address
-            ? {
-                connect: data.address,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
-          address: {
-            select: {
-              id: true,
-            },
-          },
-
           createdAt: true,
           email: true,
           firstName: true,
@@ -225,12 +185,6 @@ export class CustomerControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          address: {
-            select: {
-              id: true,
-            },
-          },
-
           createdAt: true,
           email: true,
           firstName: true,

@@ -2,7 +2,6 @@ import { Module } from "@nestjs/common";
 import { UserModule } from "./user/user.module";
 import { OrderModule } from "./order/order.module";
 import { CustomerModule } from "./customer/customer.module";
-import { AddressModule } from "./address/address.module";
 import { ProductModule } from "./product/product.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -24,7 +23,6 @@ import { AuthModule } from "./auth/auth.module";
     UserModule,
     OrderModule,
     CustomerModule,
-    AddressModule,
     ProductModule,
     HealthModule,
     PrismaModule,
